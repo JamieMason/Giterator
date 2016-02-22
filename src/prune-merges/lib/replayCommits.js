@@ -18,6 +18,7 @@ function replayCommits (options, commits) {
       commitChanges(commit)
       amendAuthor(commit)
       amendDate(commit)
+      addTag(commit)
     }
     if (i < lastIndex) {
       cleanRepo()
@@ -39,8 +40,7 @@ function replayCommits (options, commits) {
   }
 
   function commitChanges (commit) {
-    var escapedMessage = commit.message.replace(/"/g, '\\"')
-    execInTemp('git commit -m "' + escapedMessage + '"')
+    execInTemp('git commit -m "' + escape(commit.message) + '"')
   }
 
   function amendAuthor (commit) {
@@ -49,6 +49,12 @@ function replayCommits (options, commits) {
 
   function amendDate (commit) {
     execInTemp('GIT_COMMITTER_DATE="' + commit.date + '" git commit --no-edit --amend --date="' + commit.date + '"')
+  }
+
+  function addTag (commit) {
+    if (commit.tag) {
+      execInTemp('git tag --force "' + escape(commit.tag) + '"')
+    }
   }
 
   function cleanRepo () {
@@ -69,5 +75,9 @@ function replayCommits (options, commits) {
       cwd: options.pathToTemp,
       encoding: 'utf8'
     })
+  }
+
+  function escape (value) {
+    return value.replace(/"/g, '\\"')
   }
 }

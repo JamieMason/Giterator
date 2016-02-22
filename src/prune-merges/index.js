@@ -1,4 +1,5 @@
 // modules
+var addTags = require('./lib/addTags')
 var archiveCommits = require('./lib/archiveCommits')
 var getGitLog = require('./lib/getGitLog')
 var getOptions = require('./lib/getOptions')
@@ -14,6 +15,7 @@ function pruneMerges (config) {
   var options = getOptions(config.projectRoot)
   init(options)
     .then(getGitLog.bind(null, options))
+    .then(addTags.bind(null, options))
     .then(archiveCommits.bind(null, options))
     .then(sortOldestFirst)
     .then(replayCommits.bind(null, options))
