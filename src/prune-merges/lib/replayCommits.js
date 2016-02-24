@@ -44,6 +44,8 @@ function replayCommits (options, commits) {
   }
 
   function amendAuthor (commit) {
+    execInTemp('git config user.name "' + commit.authorName + '"')
+    execInTemp('git config user.email "' + commit.authorEmail + '"')
     execInTemp('git commit --no-edit --amend --author "' + commit.authorName + ' <' + commit.authorEmail + '>"')
   }
 
