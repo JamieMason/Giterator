@@ -1,14 +1,57 @@
 # giterator
 
-> Clean up your Git history.
+> Rewriting Git history while preserving original Authors and Dates.
+
+[![NPM version](http://img.shields.io/npm/v/giterator.svg?style=flat-square)](https://www.npmjs.com/package/giterator)
+[![NPM downloads](http://img.shields.io/npm/dm/giterator.svg?style=flat-square)](https://www.npmjs.com/package/giterator)
+[![Dependency Status](http://img.shields.io/david/JamieMason/giterator.svg?style=flat-square)](https://david-dm.org/JamieMason/giterator)
+[![Gitter Chat for giterator](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/JamieMason/giterator)
+[![Donate via PayPal](https://img.shields.io/badge/donate-paypal-blue.svg)](https://www.paypal.me/foldleft)
+[![Donate via Gratipay](https://img.shields.io/gratipay/user/JamieMason.svg)](https://gratipay.com/~JamieMason/)
+[![Analytics](https://ga-beacon.appspot.com/UA-45466560-5/giterator?flat&useReferer)](https://github.com/igrigorik/ga-beacon)
+[![Follow JamieMason on GitHub](https://img.shields.io/github/followers/JamieMason.svg?style=social&label=Follow)](https://github.com/JamieMason)
+[![Follow fold_left on Twitter](https://img.shields.io/twitter/follow/fold_left.svg?style=social&label=Follow)](https://twitter.com/fold_left)
 
 ## Status
 
-Giterator is a working proof-of-concept experiment.
+This is a new, experimental project which works but is still under early development. Use at your
+own risk.
 
-## Summary
+## Installation
 
-Giterator takes a git log that looks like this:
+```
+npm install --global giterator
+```
+
+## Usage
+
+```
+Usage: giterator [options] [command]
+
+Options:
+
+  -V, --version  output the version number
+  -h, --help     output usage information
+
+Commands:
+
+  ungraph     rewrite history as a single stream, without merge commits
+  help [cmd]  display help for [cmd]
+```
+
+### `ungraph`
+
+```
+Usage: giterator ungraph [options]
+
+Options:
+
+  -d, --directory <dir>  path to a clone of a git repository
+  -o, --output <dir>     a safe place to generate a rewritten copy of the repository
+  -h, --help             output usage information
+```
+
+`giterator ungraph` takes a git log that looks like this:
 
 ```
 * 94941cb - Lorem ipsum dolor sit amet (2 years, 2 months ago) <Jamie Mason>
@@ -23,7 +66,7 @@ Giterator takes a git log that looks like this:
 *   83a4ae4 - Merge branch 'develop' (2 years, 4 months ago) <Jamie Mason>
 ```
 
-And rewrites it as if you'd been using `git rebase` the whole time:
+And rewrites it in a continuous sequence:
 
 ```
 * b665943 - Lorem ipsum dolor sit amet (2 years, 2 months ago) <Jamie Mason>
@@ -34,23 +77,8 @@ And rewrites it as if you'd been using `git rebase` the whole time:
 * 70fc8f5 - perspiciatis eum fugit nemo (2 years, 4 months ago) <Jamie Mason>
 ```
 
-## Usage
+From there, check over the generated git repository and if you are happy with it:
 
-This project is a few days old so I don't expect anyone to use it, but if you're crazy;
-
-```shell
-# install
-git clone https://github.com/JamieMason/giterator.git
-cd giterator
-npm install
-
-# make available globally
-npm link .
-
-# run
-giterator prune-merges ~/some/project
-
-# inspect the output so far
-cd "${TMPDIR}giterator-repo"
-git log --pretty=oneline --graph
+```
+git remote add origin https://github.com/User/project.git
 ```
