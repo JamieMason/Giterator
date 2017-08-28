@@ -1,7 +1,7 @@
 {
   "name": "giterator",
   "description": "Clean up your Git history",
-  "version": "0.0.0",
+  "version": "0.5.2",
   "author": "Jamie Mason <jamie@foldleft.io> (https://github.com/JamieMason)",
   "bin": {
     "giterator": "dist/bin.js",
