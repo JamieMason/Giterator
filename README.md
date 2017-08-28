@@ -1,6 +1,6 @@
 # giterator
 
-> Rewriting Git history while preserving original Authors and Dates.
+> Rewrite Git history.
 
 [![NPM version](http://img.shields.io/npm/v/giterator.svg?style=flat-square)](https://www.npmjs.com/package/giterator)
 [![NPM downloads](http://img.shields.io/npm/dm/giterator.svg?style=flat-square)](https://www.npmjs.com/package/giterator)
@@ -25,6 +25,8 @@ npm install --global giterator
 
 ## Usage
 
+### `giterator`
+
 ```
 Usage: giterator [options] [command]
 
@@ -39,7 +41,7 @@ Commands:
   help [cmd]  display help for [cmd]
 ```
 
-### `ungraph`
+### `giterator ungraph`
 
 ```
 Usage: giterator ungraph [options]
