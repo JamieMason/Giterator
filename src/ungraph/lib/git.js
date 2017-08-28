@@ -26,7 +26,7 @@ export const archive = (directory, commit) =>
 export const commit = (directory, commit) =>
   execa(
     'git',
-    ['commit', '-m', `${commit.subject}\n\n${commit.body || ''}`.trim()],
+    ['commit', '-m', `${commit.subject}\n\n${commit.body || ''}`.trim(), '--no-verify'],
     replicate(directory, commit)
   );
 
