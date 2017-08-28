@@ -29,6 +29,6 @@ if (!program.output) {
 }
 
 ungraph({
-  directory: path.resolve(program.dir),
-  targetDirectory: path.resolve('/Users/foldleft/Desktop/tmp')
+  directory: path.resolve(program.directory),
+  targetDirectory: path.resolve(program.output)
 });
