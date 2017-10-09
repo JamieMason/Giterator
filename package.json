@@ -9,15 +9,14 @@
   },
   "bugs": "https://github.com/JamieMason/giterator/issues",
   "dependencies": {
-    "bluebird": "3.5.0",
+    "bluebird": "3.5.1",
     "chalk": "2.1.0",
     "commander": "2.11.0",
     "execa": "0.8.0",
-    "logservable": "1.0.0",
+    "logservable": "1.1.0",
     "nodent-runtime": "3.0.4",
-    "rimraf": "2.6.1",
-    "tar": "4.0.1",
-    "xstream": "10.9.0"
+    "rimraf": "2.6.2",
+    "tar": "4.0.1"
   },
   "devDependencies": {
     "babel-cli": "6.26.0",
