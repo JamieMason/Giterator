@@ -4,17 +4,17 @@ const isVerbose = process.env.NODE_ENV === 'development';
 const { blue, green, grey, red, underline } = chalk;
 const purple = chalk.hex('#5D67FF');
 
-export const bug = (value, err) =>
+export const bug = (value, error_) =>
   console.error(
     red('! %s\n\n! Please raise an issue at %s\n\n%s'),
     value,
     underline('https://github.com/JamieMason/giterator/issues'),
-    String(err.stack).replace(/^/gm, '    ')
+    String(error_.stack).replace(/^/gm, '    ')
   );
 
 export const commit = ({ authorDateRelative, authorName, commitHash, subject }) => {
   console.info(
-    `* %s - %s %s %s`,
+    '* %s - %s %s %s',
     red(commitHash.slice(0, 7)),
     subject,
     green(`(${authorDateRelative})`),

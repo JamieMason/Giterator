@@ -7,6 +7,7 @@ import extractTar from './extract-tar';
 
 const replicate = (directory, commit) => ({
   cwd: directory,
+  // eslint-disable-next-line unicorn/prevent-abbreviations
   env: {
     ...process.env,
     GIT_AUTHOR_DATE: commit.authorDate,

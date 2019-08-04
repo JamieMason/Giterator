@@ -23,10 +23,10 @@
     "babel-cli": "6.26.0",
     "babel-plugin-transform-object-rest-spread": "6.26.0",
     "babel-preset-es2015": "6.24.1",
-    "eslint-config-xo": "0.18.2",
-    "eslint-plugin-unicorn": "2.1.2",
+    "eslint-config-xo": "0.26.0",
+    "eslint-plugin-unicorn": "10.0.0",
     "fast-async": "6.3.0",
-    "xo": "0.18.2"
+    "xo": "0.24.0"
   },
   "files": [
     "dist"
@@ -45,6 +45,9 @@
   "license": "MIT",
   "main": "dist/index.js",
   "repository": "JamieMason/giterator",
+  "resolutions": {
+    "lodash": ">=4.17.15"
+  },
   "scripts": {
     "build": "babel --out-dir ./dist --ignore node_modules ./src",
     "lint": "xo --fix",

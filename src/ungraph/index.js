@@ -8,7 +8,6 @@ export default async ({ directory, targetDirectory }) => {
   await git.recreate(targetDirectory);
   const collect = (array, value) => array.concat(value);
   const isNotMerge = commit => commit.subject.startsWith('Merge ') === false;
-  const tag$ = logservable.tags(directory);
   const commit$ = logservable.commits(directory, fieldNames, true);
   const nonMergeCommit$ = commit$.filter(isNotMerge);
   const allNonMergeCommit$ = nonMergeCommit$.fold(collect, []);
@@ -19,8 +18,8 @@ export default async ({ directory, targetDirectory }) => {
         Bluebird.resolve()
           .then(() => log.commit(commit))
           .then(() => git.copyCommit(directory, targetDirectory, commit))
-          .catch(err => {
-            log.bug(`failed to copy commit ${commit.commitHash}`, err);
+          .catch(error => {
+            log.bug(`failed to copy commit ${commit.commitHash}`, error);
             process.exit(1);
           })
       ).then(() => console.log('done'));
